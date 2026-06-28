@@ -1,0 +1,73 @@
+version: 2
+project_name: stitchfs
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: stitchfs
+    main: .
+    binary: stitchfs
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin]
+    goarch: [amd64, arm64]
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+
+archives:
+  - id: default
+    formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+      - LICENSE
+      - CHANGELOG.md
+      - src: packaging/stitchfs.service
+        dst: .
+      - src: packaging/stitchpath
+        dst: .
+
+checksum:
+  name_template: "checksums.txt"
+
+nfpms:
+  - id: deb
+    package_name: stitchfs
+    vendor: Eric Frost
+    homepage: https://github.com/eric-frost/stitchfs
+    maintainer: Eric Frost <9555559+eric-frost@users.noreply.github.com>
+    description: |-
+      Edit several files as one virtual file; saving splits the changes back.
+      A small FUSE filesystem and CLI for combined Markdown-style editing.
+    license: MIT
+    formats: [deb]
+    dependencies:
+      - fuse3
+    bindir: /usr/bin
+    contents:
+      - src: packaging/stitchpath
+        dst: /usr/bin/stitchpath
+        file_info:
+          mode: 0755
+      - src: packaging/stitchfs.service
+        dst: /lib/systemd/system/stitchfs.service
+    scripts:
+      postinstall: packaging/deb/postinstall.sh
+
+release:
+  github:
+    owner: eric-frost
+    name: stitchfs
+  draft: false
+  prerelease: auto
+
+changelog:
+  use: github
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'

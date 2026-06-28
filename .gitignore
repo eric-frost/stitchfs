@@ -1,0 +1,15 @@
+# Build output
+/dist/
+/stitchfs
+/stitchpath
+*.test
+*.out
+coverage.*
+
+# Nix
+/result
+/result-*
+
+# Editor / OS
+.DS_Store
+*.swp

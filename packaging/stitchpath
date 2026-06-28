@@ -1,0 +1,4 @@
+#!/bin/sh
+# Thin wrapper: `stitchpath a b` == `stitchfs path a b`.
+set -eu
+exec stitchfs path "$@"

@@ -1,0 +1,15 @@
+[Unit]
+Description=stitchfs virtual file-combining filesystem
+Documentation=https://github.com/eric-frost/stitchfs
+After=local-fs.target
+
+[Service]
+Type=simple
+# Source/go-install users: change this to your binary path (e.g. %h/go/bin/stitchfs).
+ExecStart=/usr/bin/stitchfs mount -allow-other /mnt/stitchfs
+Restart=on-failure
+RestartSec=2
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
