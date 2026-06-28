@@ -11,8 +11,8 @@ provides=('stitchfs')
 conflicts=('stitchfs')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/eric-frost/stitchfs/releases/download/v$pkgver/stitchfs_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/eric-frost/stitchfs/releases/download/v$pkgver/stitchfs_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('6dd5caf0e044bd049c5dac4c555e02628fd5db334ef8074757bd0629b0995089')
-sha256sums_aarch64=('35d881a82497f6cc69e38f66bb2a618af5cd3da9d0d44a781464b7757c1463a7')
+sha256sums_x86_64=('43a8d9e5e47ecf7354acf16c2cad1466cd1a8374f528ac6bd6d2c62a5898bca8')
+sha256sums_aarch64=('d97632bdb87b95cdd86ccb793211f79a71cd33b6a04e5a8aed0e926cb273f164')
 
 package() {
 	install -Dm755 stitchfs "$pkgdir/usr/bin/stitchfs"
