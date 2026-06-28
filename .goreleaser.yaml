@@ -24,10 +24,8 @@ archives:
       - README.md
       - LICENSE
       - CHANGELOG.md
-      - src: packaging/stitchfs.service
-        dst: .
-      - src: packaging/stitchpath
-        dst: .
+      - packaging/stitchfs.service
+      - packaging/stitchpath
 
 checksum:
   name_template: "checksums.txt"
