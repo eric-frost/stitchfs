@@ -64,6 +64,12 @@ nix profile install github:eric-frost/stitchfs              # install it
 brew install eric-frost/tap/stitchfs
 ```
 
+### Arch (AUR)
+
+```bash
+yay -S stitchfs-bin     # or: paru -S stitchfs-bin
+```
+
 ### Build from source
 
 ```bash

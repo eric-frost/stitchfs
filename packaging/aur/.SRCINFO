@@ -1,0 +1,17 @@
+pkgbase = stitchfs-bin
+	pkgdesc = Edit several files as one; saving splits the changes back into the originals
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/eric-frost/stitchfs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fuse3
+	provides = stitchfs
+	conflicts = stitchfs
+	source_x86_64 = stitchfs-bin-0.4.0-x86_64.tar.gz::https://github.com/eric-frost/stitchfs/releases/download/v0.4.0/stitchfs_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6dd5caf0e044bd049c5dac4c555e02628fd5db334ef8074757bd0629b0995089
+	source_aarch64 = stitchfs-bin-0.4.0-aarch64.tar.gz::https://github.com/eric-frost/stitchfs/releases/download/v0.4.0/stitchfs_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 35d881a82497f6cc69e38f66bb2a618af5cd3da9d0d44a781464b7757c1463a7
+
+pkgname = stitchfs-bin
