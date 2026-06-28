@@ -54,8 +54,8 @@ This also installs the `stitchpath` wrapper and a `stitchfs.service` systemd uni
 ### Nix
 
 ```bash
-nix run github:eric-frost/stitchfs -- /etc/hosts notes.md   # try it
-nix profile install github:eric-frost/stitchfs              # install it
+nix run github:eric-frost/stitchfs -- --version   # try it
+nix profile install github:eric-frost/stitchfs    # install it
 ```
 
 ### Homebrew
@@ -85,6 +85,7 @@ present at runtime for the mount to work.
 
 ```bash
 # 1. Run the mount (or install the systemd service — see below).
+sudo mkdir -p /mnt/stitchfs
 stitchfs mount -allow-other /mnt/stitchfs &
 
 # 2. Get a combined view of two files.
