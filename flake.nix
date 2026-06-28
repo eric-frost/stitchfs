@@ -16,9 +16,7 @@
           pname = "stitchfs";
           inherit version;
           src = ./.;
-          # Update with `nix build` once and paste the hash it prints, or run
-          # `go mod vendor` and set this to null.
-          vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          vendorHash = "sha256-RoelsTrvGjQZeFIa8PupdkmBObe9gfoTpggpICAro7Y=";
           ldflags = [ "-s" "-w" "-X" "main.version=${version}" ];
           meta = with pkgs.lib; {
             description = "Edit several files as one virtual file; saving splits the changes back";

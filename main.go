@@ -14,6 +14,7 @@ import (
 	"os/signal"
 	pathpkg "path"
 	"path/filepath"
+	"runtime/debug"
 	"sort"
 	"strings"
 	"sync"
@@ -1418,7 +1419,7 @@ func runMountMode(args []string) {
 	flag.CommandLine.Parse(args)
 
 	if showVersion {
-		fmt.Println(version)
+		fmt.Println(resolveVersion())
 		return
 	}
 
@@ -1469,9 +1470,21 @@ func hashName(name string) uint64 {
 	return h
 }
 
+// resolveVersion returns the ldflags-injected version, falling back to the
+// module version embedded by `go install` so those builds report it too. */
+func resolveVersion() string {
+	if version != "dev" {
+		return version
+	}
+	if info, ok := debug.ReadBuildInfo(); ok && info.Main.Version != "" && info.Main.Version != "(devel)" {
+		return info.Main.Version
+	}
+	return version
+}
+
 func main() {
 	if len(os.Args) > 1 && (os.Args[1] == "-version" || os.Args[1] == "--version") {
-		fmt.Println(version)
+		fmt.Println(resolveVersion())
 		return
 	}
 	if len(os.Args) > 1 {
