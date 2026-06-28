@@ -28,6 +28,11 @@ mistakes. `stitchfs` gives you one editable buffer with a clear, machine-checkab
 boundary between sections, and makes the write-back transactional so a fat-fingered
 save can't quietly corrupt your files.
 
+It's also handy for composing a file out of reusable templates — e.g. assembling
+an `AGENTS.md` (or `README`, CI config, prompt, license header) from shared
+fragments, so each project stitches together the templates it needs and you edit
+them in place from the combined view.
+
 ## Install
 
 `stitchfs` runs on **Linux and macOS** (FUSE required). No Windows.
